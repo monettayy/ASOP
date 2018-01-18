@@ -1,5 +1,6 @@
-#ifndef POSTFIXEVALUATOR_H
-#define POSTFIXEVALUATOR_H
+#include <iostream>
+
+using namespace std;
 
 #include "MyStack.h"
 
@@ -9,18 +10,20 @@ class PostfixEvaluator
         PostfixEvaluator();
         PostfixEvaluator(string);
 
-        char processExpr();
-
         bool isValid();
         bool charIsOperator(char);
         bool charIsOperand(char);
+
+        char processExpr();
+
         virtual ~PostfixEvaluator();
+
     protected:
+
     private:
-        MyStack _stack;
-        char *_expr;
         int _index;
+        char *_expr;
+        MyStack _stack;
+
         char nextChar();
 };
-
-#endif // POSTFIXEVALUATOR_H

@@ -1,8 +1,4 @@
-#ifndef MYSTACK_H
-#define MYSTACK_H
-
 #include <iostream>
-#include <cstdlib>
 
 using namespace std;
 
@@ -14,23 +10,22 @@ class MyStack
 
         bool isEmpty();
         bool isFull();
-        void emptyStack();
+
         void push(char);
-        char pop();
-        char peek();
+        void emptyStack();
         void print();
+        char peek();
+        char pop();
 
         virtual ~MyStack();
 
     protected:
 
     private:
-        int N;
-        int ctr;
-        const int MAX = 10;
-        char *_stack = NULL;
+        int _N;
+        int _ctr;
+        char *_stack;
+        static const int MAX = 10;
 
-        void initializeStack();
+        void initializeStack(int);
 };
-
-#endif // MYSTACK_H

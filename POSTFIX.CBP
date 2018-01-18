@@ -36,12 +36,10 @@
 			<Add directory="src" />
 			<Add directory="include" />
 		</Compiler>
-		<Unit filename="include/MYSTYLE.H" />
 		<Unit filename="include/MyStack.h" />
 		<Unit filename="include/PostfixEvaluator.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/MYSTACK.CPP" />
-		<Unit filename="src/MYSTYLE.CPP" />
 		<Unit filename="src/PostfixEvaluator.cpp" />
 		<Extensions>
 			<code_completion />

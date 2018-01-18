@@ -31,3 +31,20 @@
 	"PostfixEvaluator.h"
 	"MYSTYLE.H"
 
+1516122442 source:c:\users\fornaleza\desktop\fornaleza-fd\asop\activity06\postfix\main.cpp
+	<iostream>
+	"PostfixEvaluator.h"
+
+1516123610 c:\users\fornaleza\desktop\fornaleza-fd\asop\activity06\postfix\include\postfixevaluator.h
+	<iostream>
+	"MyStack.h"
+
+1516123635 c:\users\fornaleza\desktop\fornaleza-fd\asop\activity06\postfix\include\mystack.h
+	<iostream>
+
+1516124437 source:c:\users\fornaleza\desktop\fornaleza-fd\asop\activity06\postfix\src\postfixevaluator.cpp
+	"PostfixEvaluator.h"
+
+1516123518 source:c:\users\fornaleza\desktop\fornaleza-fd\asop\activity06\postfix\src\mystack.cpp
+	"MyStack.h"
+

@@ -1,66 +1,50 @@
-#include <iostream>
-#include <cstdlib>
-
-using namespace std;
-
 #include "MyStack.h"
-#include "MyStyle.h"
 
 MyStack::MyStack()
 {
-    N = MAX;
-    initializeStack();
+    initializeStack(MAX);
 }
 
-MyStack::MyStack(int N)
+MyStack::MyStack(int n)
 {
-    this->N = N;
-    initializeStack();
+    initializeStack(n);
 }
 
 bool MyStack::isEmpty()
 {
-    return ctr == 0 ? true : false;
+    return _ctr == 0 ? true : false;
 }
 
 bool MyStack::isFull()
 {
-    return ctr < N ? false : true;
-}
-
-void MyStack::emptyStack()
-{
-    delete[] _stack;
-    _stack = NULL;
-    N = MAX;
-    initializeStack();
+    return _ctr > _N ? true : false;
 }
 
 void MyStack::push(char c)
 {
+    _ctr++;
+
     if(isFull())
-        N *= 2;
+        _N *= 2;
 
-    char *temp = new char[N];
-
-    int i;
+    char *temp = new char[_N];
     temp[0] = c;
-    for(int i=1; i<=ctr; i++)
+
+    for(int i=1; i<_ctr; i++)
         temp[i] = _stack[i-1];
 
     delete[] _stack;
     _stack = temp;
-
-    ctr++;
 }
 
 char MyStack::pop()
 {
-    ctr--;
-    char *temp = new char[N];
+    _ctr--;
 
+    char *temp = new char[_N];
     char popValue = *_stack++;
-    for(int i=0; i<ctr; i++)
+
+    for(int i=0; i<_ctr; i++)
         temp[i] = _stack[i];
 
     delete[] _stack;
@@ -77,22 +61,25 @@ char MyStack::peek()
 void MyStack::print()
 {
     if(isEmpty())
-        MyStyle::centerText("Stack is now empty");
+        cout << "Stack is now empty";
     else
-    {
-        MyStyle::centerTextAsk("", ctr + (ctr-1));
-        for(int i=0; i<ctr; i++)
+        for(int i=0; i<_ctr; i++)
             cout << _stack[i] << " ";
-        cout << endl;
-    }
+
+    cout << endl;
 }
 
-void MyStack::initializeStack()
+void MyStack::emptyStack()
 {
-    ctr = 0;
-    _stack = new char[N];
-    for(int i=0; i<N; i++)
-        _stack[i] = NULL;
+    initializeStack(MAX);
+}
+
+void MyStack::initializeStack(int n)
+{
+    _N = n;
+    _ctr = 0;
+    _stack = new char[_N];
+    _stack = NULL;
 }
 
 MyStack::~MyStack()
