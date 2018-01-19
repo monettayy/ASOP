@@ -12,60 +12,6 @@ PostfixEvaluator::PostfixEvaluator(string s)
     _expr  = (char *) s.c_str();
 }
 
-char PostfixEvaluator::nextChar()
-{
-    char c =  *(_expr + _index);
-    _index++;
-
-    return c;
-}
-
-char PostfixEvaluator::processExpr()
-{
-    char c;
-    char result;
-
-    while ((c = nextChar()) != '\0')
-    {
-        if(charIsOperand(c))
-            _stack.push(c);
-        else
-        {
-            char pop1 = _stack.pop();
-            char pop2 = _stack.pop();
-
-            int op1 = pop1 - '0';
-            int op2 = pop2 - '0';
-
-            int opResult;
-
-            switch(c){
-                case '*':
-                    opResult = op1 * op2;
-                    break;
-                case '/':
-                    opResult = op1 / op2;
-                    break;
-                case '%':
-                    opResult = op1 % op2;
-                    break;
-                case '+':
-                    opResult = op1 + op2;
-                    break;
-                case '-':
-                    opResult = op1 - op2;
-                    break;
-            }
-
-            result = opResult + '0';
-            _stack.push(result);
-        }
-    }
-
-    _index = 0;
-    return _stack.peek();
-}
-
 bool PostfixEvaluator::isValid()
 {
     char c;
@@ -98,6 +44,73 @@ bool PostfixEvaluator::charIsOperand(char c)
            c == '4' || c == '5' || c == '6' ||
            c == '7' || c == '8' || c == '9' ||
            c == '0';
+}
+
+char PostfixEvaluator::nextChar()
+{
+    char c =  *(_expr + _index);
+    _index++;
+
+    return c;
+}
+
+int sum(int x, int y)
+{
+    return x + y;
+}
+
+int difference(int x, int y)
+{
+    return x - y;
+}
+
+int product(int x, int y)
+{
+    return x * y;
+}
+
+int qoutient(int x, int y)
+{
+    return x / y;
+}
+
+int mod(int x, int y)
+{
+    return x % y;
+}
+
+char PostfixEvaluator::processExpr()
+{
+    char c;
+
+    while ((c = nextChar()) != '\0')
+    {
+        if(charIsOperand(c))
+            _stack.push(c);
+        else
+        {
+            int op1 = _stack.pop() - '0';
+            int op2 = _stack.pop() - '0';
+            int (* o) (int, int) = NULL;
+
+            switch(c)
+            {
+                case '*': o = product;      break;
+                case '/': o = qoutient;     break;
+                case '%': o = mod;          break;
+                case '+': o = sum;          break;
+                case '-': o = difference;   break;
+            }
+
+            int intResult = o(op1, op2);
+            char charResult = intResult + '0';
+
+            _stack.push(charResult);
+        }
+    }
+
+    _index = 0;
+    return _stack.peek();
 }
 
 PostfixEvaluator::~PostfixEvaluator()

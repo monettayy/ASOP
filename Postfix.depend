@@ -1,20 +1,17 @@
 # depslib dependency file v1.0
-1515942432 source:e:\asop\activity06\postfix\main.cpp
+1516124478 source:e:\asop\activity06\postfix\main.cpp
 	<iostream>
 	"PostfixEvaluator.h"
 
-1515942564 e:\asop\activity06\postfix\include\postfixevaluator.h
+1516324012 e:\asop\activity06\postfix\include\postfixevaluator.h
+	<iostream>
 	"MyStack.h"
 
-1515832040 e:\asop\activity06\postfix\include\mystack.h
+1516323074 e:\asop\activity06\postfix\include\mystack.h
 	<iostream>
-	<cstdlib>
 
-1515913706 source:e:\asop\activity06\postfix\src\mystack.cpp
-	<iostream>
-	<cstdlib>
+1516322190 source:e:\asop\activity06\postfix\src\mystack.cpp
 	"MyStack.h"
-	"MyStyle.h"
 
 1515913806 e:\asop\activity06\postfix\include\mystyle.h
 	<string>
@@ -25,11 +22,8 @@
 	<windows.h>
 	"MyStyle.h"
 
-1515942514 source:e:\asop\activity06\postfix\src\postfixevaluator.cpp
-	<iostream>
-	<cstdlib>
+1516320990 source:e:\asop\activity06\postfix\src\postfixevaluator.cpp
 	"PostfixEvaluator.h"
-	"MYSTYLE.H"
 
 1516122442 source:c:\users\fornaleza\desktop\fornaleza-fd\asop\activity06\postfix\main.cpp
 	<iostream>

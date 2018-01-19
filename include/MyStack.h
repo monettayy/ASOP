@@ -12,10 +12,10 @@ class MyStack
         bool isFull();
 
         void push(char);
-        void emptyStack();
-        void print();
-        char peek();
         char pop();
+        char peek();
+        void print();
+        void emptyStack();
 
         virtual ~MyStack();
 
@@ -27,5 +27,6 @@ class MyStack
         char *_stack;
         static const int MAX = 10;
 
+        void shiftStack(char *, int);
         void initializeStack(int);
 };

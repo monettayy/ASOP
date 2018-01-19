@@ -30,27 +30,28 @@ void MyStack::push(char c)
     char *temp = new char[_N];
     temp[0] = c;
 
-    for(int i=1; i<_ctr; i++)
-        temp[i] = _stack[i-1];
-
-    delete[] _stack;
-    _stack = temp;
+    shiftStack(temp, 1);
 }
 
 char MyStack::pop()
 {
     _ctr--;
 
-    char *temp = new char[_N];
     char popValue = *_stack++;
+    char *temp = new char[_N];
 
-    for(int i=0; i<_ctr; i++)
-        temp[i] = _stack[i];
+    shiftStack(temp, 0);
+
+    return popValue;
+}
+
+void MyStack::shiftStack(char *temp, int start)
+{
+    for(int i=start; i<_ctr; i++)
+        temp[i] = _stack[i-start];
 
     delete[] _stack;
     _stack = temp;
-
-    return popValue;
 }
 
 char MyStack::peek()
